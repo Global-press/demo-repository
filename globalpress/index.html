@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Global Press Media — Contributor Hub</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Empowering contributors to shape global narratives through verified media, creative automation, and transparent workflows.">
+  <link rel="icon" href="https://via.placeholder.com/48x48.png?text=GPM" />
+  <style>
+    :root {
+      --primary: #2d394b;
+      --accent: #1cb0f6;
+      --background: #f7fafc;
+      --card: #fff;
+      --text: #222;
+      --muted: #6b7280;
+      --success: #36c588;
+      --warn: #ffb900;
+      --danger: #e53e3e;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+      background: var(--background);
+      color: var(--text);
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1.5rem 0 1rem 0;
+      text-align: center;
+    }
+    header img {
+      height: 50px;
+      margin-bottom: 0.5rem;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .mission {
+      background: var(--card);
+      margin: 2rem auto 1rem auto;
+      padding: 1.2rem 1.5rem;
+      border-radius: 8px;
+      max-width: 650px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+      text-align: center;
+      font-size: 1.18rem;
+    }
+    .quicklinks {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0 2.5rem 0;
+    }
+    .quicklink-card {
+      background: var(--card);
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+      padding: 1rem 1.2rem;
+      min-width: 200px;
+      text-align: center;
+      transition: box-shadow 0.2s;
+    }
+    .quicklink-card:hover {
+      box-shadow: 0 4px 20px rgba(44,176,246,0.12);
+    }
+    .quicklink-card a, .quicklink-card a:visited {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.08rem;
+    }
+    .section-title {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .modules-table, .sources-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto 2rem auto;
+      background: var(--card);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    }
+    .modules-table th, .modules-table td,
+    .sources-table th, .sources-table td {
+      padding: 0.8rem;
+      border-bottom: 1px solid #f0f1f5;
+      text-align: left;
+    }
+    .modules-table th, .sources-table th {
+      background: var(--background);
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .modules-table tr:last-child td,
+    .sources-table tr:last-child td {
+      border-bottom: none;
+    }
+    .monetization-list {
+      max-width: 650px;
+      margin: 2rem auto;
+      background: var(--card);
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+      padding: 1.2rem 1.5rem;
+    }
+    .monetization-list li {
+      margin-bottom: 1.4rem;
+    }
+    .deployment-flow {
+      max-width: 800px;
+      margin: 2.5rem auto;
+      background: var(--card);
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+      padding: 1.2rem 1.5rem;
+      font-size: 0.98rem;
+    }
+    pre {
+      background: #23272e;
+      color: #f7fafc;
+      border-radius: 6px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.98rem;
+    }
+    @media (max-width: 700px) {
+      .quicklinks { flex-direction: column; gap: 1.5rem; }
+      .modules-table, .sources-table { font-size: 0.97rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://via.placeholder.com/180x48.png?text=GlobalPress" alt="Global Press Media Logo">
+    <h1>Global Press Media — Contributor Hub</h1>
+    <div style="margin-top:0.6rem;font-size:1rem;color:#d9f2fb;">Empowering contributors to shape global narratives</div>
+  </header>
+  <section class="mission">
+    <strong>Mission Statement:</strong> <br>
+    Empowering contributors to shape global narratives through verified media, creative automation, and transparent workflows.
+  </section>
+  <div class="section-title">🔗 Quick Access Links</div>
+  <div class="quicklinks">
+    <div class="quicklink-card">
+      <a href="/onboarding/index.html">Contributor Onboarding Pack</a>
+    </div>
+    <div class="quicklink-card">
+      <a href="/docs/audit/index.html">Audit-Ready Docs</a>
+    </div>
+    <div class="quicklink-card">
+      <a href="https://globalpress.slack.com" target="_blank" rel="noopener">Slack Workspace</a>
+    </div>
+    <div class="quicklink-card">
+      <a href="/submit/index.html">Submit a Story</a>
+    </div>
+    <div class="quicklink-card">
+      <a href="/assets/branding-kit.zip">Brand Assets</a>
+    </div>
+  </div>
+  <div class="section-title">🛠️ Automation Modules</div>
+  <table class="modules-table">
+    <thead>
+      <tr>
+        <th>Module</th>
+        <th>Description</th>
+        <th>Trigger</th>
+        <th>Fallback</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Gemini Scripting</td>
+        <td>Auto-generates branded captions &amp; summaries</td>
+        <td>On content upload</td>
+        <td>Logs to <code>/logs/gemini-fallback.json</code></td>
+      </tr>
+      <tr>
+        <td>Slack Alerts</td>
+        <td>Notifies team of new contributor actions</td>
+        <td>On form submit</td>
+        <td>Email fallback to <code>alerts@globalpress.media</code></td>
+      </tr>
+      <tr>
+        <td>Page Access Logger</td>
+        <td>Tracks contributor dashboard visits</td>
+        <td>On page load</td>
+        <td>Local JSON log + Slack ping</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="section-title">📰 Auto-Publish News & Sports</div>
+  <div style="max-width:800px;margin:0 auto;">
+    <table class="modules-table">
+      <thead>
+        <tr>
+          <th>Module</th>
+          <th>Description</th>
+          <th>Trigger</th>
+          <th>Fallback</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Gemini-powered scripting</td>
+          <td>Real-time news summaries, sports updates</td>
+          <td>On feed update</td>
+          <td>Log errors to <code>/logs/feed-fallback.json</code></td>
+        </tr>
+        <tr>
+          <td>RSS-to-HTML Converter</td>
+          <td>Pull verified feeds (AP, Reuters, ESPN)</td>
+          <td>Scheduled</td>
+          <td>Manual feed check</td>
+        </tr>
+        <tr>
+          <td>GitHub Actions Scheduler</td>
+          <td>Deploy updates to <code>/news/</code>, <code>/sports/</code></td>
+          <td>Hourly cron</td>
+          <td>Manual deploy</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="section-title">🧠 Suggested Sources</div>
+    <table class="sources-table">
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Type</th>
+          <th>Integration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AP News API</td>
+          <td>Global news</td>
+          <td>RSS or JSON fetch</td>
+        </tr>
+        <tr>
+          <td>ESPN Headlines</td>
+          <td>Sports</td>
+          <td>RSS feed</td>
+        </tr>
+        <tr>
+          <td>Google News</td>
+          <td>Trending</td>
+          <td>RSS + keyword filter</td>
+        </tr>
+        <tr>
+          <td>Local Feeds (Benin, Okene)</td>
+          <td>Regional</td>
+          <td>Manual curation or WhatsApp bot</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section-title">💰 Monetization Without Ads</div>
+  <ul class="monetization-list">
+    <li>
+      <strong>🔐 Premium Access:</strong> Lock <code>/exclusive/</code> folder behind contributor login. <br>
+      Early access to investigative drops, Gemini-enhanced reports.
+    </li>
+    <li>
+      <strong>🛍️ Branded Drops:</strong> Auto-generate merch captions from Gemini summaries. <br>
+      Link to storefront (e.g., PayMint-powered).
+    </li>
+    <li>
+      <strong>📩 Email Monetization:</strong> Weekly digest with affiliate links. <br>
+      Use <a href="https://mailmint.app/" target="_blank">MailMint</a> or <a href="https://buttondown.email/" target="_blank">Buttondown</a> for branded delivery.
+    </li>
+    <li>
+      <strong>🎙️ Audio & Podcast Monetization:</strong> Convert top stories to voice (ElevenLabs, PlayHT). <br>
+      Monetize via subscriptions or voice actor payouts.
+    </li>
+    <li>
+      <strong>🧾 Contributor Services:</strong> Offer branded kits, audit templates, and automation modules as paid downloads. <br>
+      Use <a href="https://gumroad.com/" target="_blank">Gumroad</a> or <a href="https://ko-fi.com/" target="_blank">Ko-fi</a> for storefront.
+    </li>
+  </ul>
+  <div class="section-title">🔧 Deployment Flow</div>
+  <div class="deployment-flow">
+    <pre>
+# GitHub Action: Auto-publish news
+on:
+  schedule:
+    - cron: '0 * * * *' # hourly
+jobs:
+  fetch-news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch RSS
+        run: curl https://newsapi.org/v2/top-headlines?... > news.json
+      - name: Format HTML
+        run: node format-news.js
+      - name: Commit & Push
+        run: git commit -am "Auto-update news" && git push
+    </pre>
+  </div>
+
+  <!--
+  Fallback Logging (Activate with your backend or JS fetch):
+  <script>
+    // Log page visit to /logs/gemini-fallback.json
+    fetch('/logs/gemini-fallback.json', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        event: 'dashboard_visit',
+        timestamp: new Date().toISOString(),
+        user: 'anonymous' // Replace with actual username if available
+      })
+    });
+  </script>
+  -->
+
+  <!--
+  Slack Alert Hook (Activate with your integration):
+  <script>
+    // Example: Notify Slack workspace on dashboard visit or form submit
+    // fetch('https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK', {
+    //   method: 'POST',
+    //   body: JSON.stringify({text: "Contributor dashboard visited"})
+    // });
+  </script>
+  -->
+
+  <footer style="margin:3rem 0;text-align:center;font-size:0.95rem;color:var(--muted);">
+    © 2025 Global Press Media | Contributor Hub
+  </footer>
+</body>
+</html>
