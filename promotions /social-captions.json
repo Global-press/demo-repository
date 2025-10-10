@@ -1,0 +1,92 @@
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const fs = require('fs').promises;
+const path = require('path');
+require('dotenv').config();
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+async function sendSlackMessage(channelId, message) {
+    const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL;
+    if (!slackWebhookUrl) {
+        console.warn("SLACK_WEBHOOK_URL not set. Skipping Slack notification.");
+        return;
+    }
+    try {
+        await fetch(slackWebhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ channel: channelId, text: message })
+        });
+        console.log("Slack notification sent successfully.");
+    } catch (error) {
+        console.error("Failed to send Slack notification:", error);
+    }
+}
+
+async function generateInstagramCaption() {
+  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+  const exampleTopHeadlines = [
+    "New report reveals climate change impact on indigenous communities in the Arctic.",
+    "Local artisan collective launches innovative digital marketplace.",
+    "Global Press Media expands its contributor network across continents."
+  ];
+
+  const socialContext = {
+    handle: "@global.press0",
+    bio_suggestion: "Global drops. Local voices. Powered by Gemini. 📰 Contributor-led publishing | 🌍 Audit-friendly media",
+    link_in_bio: "https://globalpress.media/news"
+  };
+
+  const prompt = `
+    You are an AI assistant for Global Press Media, an organization that empowers local voices with global reach.
+    Your task is to generate a compelling Instagram caption for a post featuring our top weekly headlines.
+
+    Here's our Instagram context:
+    - Official Handle: ${socialContext.handle}
+    - Bio Suggestion: "${socialContext.bio_suggestion}"
+    - Link in Bio: ${socialContext.link_in_bio}
+
+    Here are this week's top headlines:
+    ${exampleTopHeadlines.map((h, i) => `${i + 1}. ${h}`).join('\n')}
+
+    Please generate an Instagram caption (max 2200 characters) that:
+    - Summarizes the essence of these headlines.
+    - Highlights the mission of Global Press Media (global drops, local voices).
+    - Includes a call to action to follow us or visit the link in bio.
+    - Incorporates relevant hashtags (e.g., #GlobalPressMedia, #News, #LocalVoices, #ClimateChange, #Community).
+    - Sounds engaging and professional.
+    - Does NOT include emojis other than for visual breaks.
+  `;
+
+  const result = await model.generateContent(prompt);
+  const generatedCaption = result.response.text();
+
+  const socialCaptionsFilePath = path.join(__dirname, 'promotions', 'social-captions.json');
+  let socialCaptionsConfig;
+  try {
+      socialCaptionsConfig = JSON.parse(await fs.readFile(socialCaptionsFilePath, 'utf8'));
+  } catch (error) {
+      socialCaptionsConfig = {
+          instagram: socialContext,
+          automation_config: {
+              slack_channel_id: process.env.SLACK_CHANNEL_ID || "general"
+          },
+          first_post_caption: {}
+      };
+  }
+
+  socialCaptionsConfig.first_post_caption = {
+    date: new Date().toISOString().split('T')[0],
+    caption: generatedCaption
+  };
+
+  // Uncomment for production:
+  // await fs.writeFile(socialCaptionsFilePath, JSON.stringify(socialCaptionsConfig, null, 2), 'utf8');
+
+  const slackChannel = socialCaptionsConfig.automation_config.slack_channel_id;
+  const slackMessage = `🔥 New Instagram caption generated for @global.press0!\n\n"${generatedCaption}"\n\nReady for review and posting.`;
+  await sendSlackMessage(slackChannel, slackMessage);
+}
+
+generateInstagramCaption();
