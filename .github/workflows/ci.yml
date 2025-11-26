@@ -1,0 +1,57 @@
+# GitHub Actions CI: lint -> test -> build -> Slack alert on completion/failure
+on:
+  push:
+    branches:
+      - main
+      - 'release/*'
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 2 * * *' # daily at 02:00 UTC
+
+name: Global-press CI
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Notify Slack (always runs)
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          HOSTINGER_SITE_URL: ${{ secrets.HOSTINGER_SITE_URL }}
+          WP_PUSHER_REPO: ${{ secrets.WP_PUSHER_REPO }}
+          WP_PUSHER_DEPLOY_TYPE: ${{ secrets.WP_PUSHER_DEPLOY_TYPE }}
+          JOB_STATUS: ${{ job.status }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.ref_name }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_NUMBER: ${{ github.run_number }}
+          ACTOR: ${{ github.actor }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          node scripts/slack-alert.js
