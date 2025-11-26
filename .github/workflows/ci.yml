@@ -43,9 +43,6 @@ jobs:
         if: always()
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          HOSTINGER_SITE_URL: ${{ secrets.HOSTINGER_SITE_URL }}
-          WP_PUSHER_REPO: ${{ secrets.WP_PUSHER_REPO }}
-          WP_PUSHER_DEPLOY_TYPE: ${{ secrets.WP_PUSHER_DEPLOY_TYPE }}
           JOB_STATUS: ${{ job.status }}
           REPO: ${{ github.repository }}
           BRANCH: ${{ github.ref_name }}
