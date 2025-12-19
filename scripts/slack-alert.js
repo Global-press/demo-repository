@@ -28,7 +28,7 @@ if (!SLACK_WEBHOOK_URL) {
   console.error('Missing SLACK_WEBHOOK_URL. Writing fallback log.');
   writeFallback({ error: 'Missing SLACK_WEBHOOK_URL', env: { REPO, BRANCH, RUN_ID, RUN_NUMBER, ACTOR, EVENT_NAME, JOB_STATUS } });
   process.exitCode = 1;
-  return;
+  process.exit(1);
 }
 
 const statusEmoji = JOB_STATUS === 'success' ? ':white_check_mark:' : JOB_STATUS === 'failure' ? ':x:' : ':warning:';
